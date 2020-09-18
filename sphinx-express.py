@@ -297,7 +297,7 @@ def initconfig():
     type=click.Path(),
     default=SphinxExpress.default_configfile,
     help="""
-    sphinx-quickstart configfile.
+    sphinx-express configfile.
     default: {}""".format( SphinxExpress.default_configfile),
 )
 @click.option(
