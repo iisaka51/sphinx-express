@@ -76,6 +76,7 @@ project_underline: ======
 """
 
 IGNORE_OPTIONS=[
+    "path",
     "rsrcdir",
     "rbuilddir",
     "now",
@@ -84,11 +85,18 @@ IGNORE_OPTIONS=[
 REPLACE_CONFIGS = {
     "html_theme = 'alabaster'":
 """
-# Avilable Themes:
-# alabaster, sphinx_rtd_theme
+# Avilable Themes: alabaster
+{% set default_theme="alabaster" %}
+{%- if 'sphinx_rtd_theme' in extensions %}
+# sphinx_rtd_theme
+{% set default_theme="sphinx_rtd_theme" %}
+{%- endif %}
+{%- if 'pallets_sphinx_themes' in extensions %}
 # babel, click, flask, jinja, platter, pocoo, werkzeug
+{% set default_theme="flask" %}
+{%- endif %}
 #
-html_theme = "sphinx_rtd_theme"
+html_theme = "{{ default_theme }}"
 """,
 }
 
@@ -337,15 +345,14 @@ def _generate(
     if new:
         least_config = dict()
         templatedir = None
+        d["path"] = project_dir
+        d["project"] = project or project_dir
+        d["author"] = author
+        d["version"] = version
+        d["lang"] = lang
     else:
         least_config = config.load_config()
-
-    d.update(**least_config)
-    d["path"] = project_dir
-    d["project"] = project or project_dir
-    d["author"] = author
-    d["version"] = version
-    d["lang"] = lang
+        d.update(**least_config)
 
     ask_user(d)
 
