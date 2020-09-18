@@ -331,11 +331,9 @@ def _generate(
     d = DEFAULTS.copy()
     config = SphinxExpress(configfile)
     if new:
-        click.echo('NEW')
         least_config = dict()
         templatedir = None
     else:
-        click.echo('LEAST')
         least_config = config.load_config()
 
     d.update(**least_config)
