@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+__AUTHOR__="Gochi Iisaka"
+__VERSION__="0.1.0"
+__LICENSE__="MIT"
+
 import os
 import click
 import yaml
