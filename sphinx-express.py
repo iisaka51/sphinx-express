@@ -342,11 +342,11 @@ def _generate(
 
     d = DEFAULTS.copy()
     d["path"] = project_dir
+    d["project"] = project or project_dir
     config = SphinxExpress(configfile)
     if new:
         least_config = dict()
         templatedir = None
-        d["project"] = project or project_dir
         d["author"] = author
         d["version"] = version
         d["lang"] = lang
