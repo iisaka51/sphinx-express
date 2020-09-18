@@ -77,6 +77,7 @@ project_underline: ======
 
 IGNORE_OPTIONS=[
     "path",
+    "project",
     "rsrcdir",
     "rbuilddir",
     "now",
@@ -87,14 +88,14 @@ REPLACE_CONFIGS = {
 """
 # Avilable Themes: alabaster
 {% set default_theme="alabaster" %}
-{%- if 'sphinx_rtd_theme' in extensions %}
+{%- if 'sphinx_rtd_theme' in extensions -%}
 # sphinx_rtd_theme
 {% set default_theme="sphinx_rtd_theme" %}
-{%- endif %}
-{%- if 'pallets_sphinx_themes' in extensions %}
+{%- endif -%}
+{%- if 'pallets_sphinx_themes' in extensions -%}
 # babel, click, flask, jinja, platter, pocoo, werkzeug
 {% set default_theme="flask" %}
-{%- endif %}
+{%- endif -%}
 #
 html_theme = "{{ default_theme }}"
 """,
@@ -119,7 +120,6 @@ autosectionlabel_maxdepth = 1
 {%- endif %}
 
 {%- if 'sphinxcontrib.seqdiag' in extensions %}
-
 # -- Options for seqdiag output -------------------------------------------
 
 # curl -O https://ja.osdn.net/projects/ipafonts/downloads/51868/IPAfont00303.zip
@@ -130,7 +130,6 @@ seqdiag_html_image_format = 'SVG'
 {%- endif %}
 
 {%- if 'sphinxcontrib.nwdiag' in extensions %}
-
 # -- Options for nwdiag output --------------------------------------------
 
 nwdiag_html_image_format = 'SVG'
@@ -139,21 +138,18 @@ packetdiag_html_image_format = 'SVG'
 {%- endif %}
 
 {%- if 'sphinxcontrib.blockdiag' in extensions %}
-
 # -- Options for blockdiag output ------------------------------------------
 
 blockdiag_html_image_format = 'SVG'
 {%- endif %}
 
 {%- if 'sphinxcontrib.actdiag' in extensions %}
-
 # -- Options for actdiag output --------------------------------------------
 
 actdiag_html_image_format = 'SVG'
 {%- endif %}
 
 {%- if 'sphinxcontrib.httpdomain' in extensions %}
-
 # -- Options for httpdomain output ------------------------------------------
 
 # List of HTTP header prefixes which should be ignored in strict mode:
@@ -176,7 +172,6 @@ http_strict_mode = True
 
 
 {%- if 'recommonmark' in extensions %}
-
 # -- Options for recommonmark output ----------------------------------------
 import recommonmark
 from recommonmark.transform import AutoStructify
