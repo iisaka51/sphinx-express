@@ -346,8 +346,6 @@ def _generate(
     d["author"] = author
     d["version"] = version
     d["lang"] = lang
-    d["make_mode"] = True
-    d["ext_mathjax"] = True
 
     ask_user(d)
 
