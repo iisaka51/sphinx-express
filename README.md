@@ -72,14 +72,14 @@ accept a default value, if one is given in brackets).
 
 Selected root path: sample
 
-Creating file /Users/goichiiisaka/bin/kk/sample/source/conf.py.
-Creating file /Users/goichiiisaka/bin/kk/sample/source/index.rst.
-Creating file /Users/goichiiisaka/bin/kk/sample/Makefile.
-Creating file /Users/goichiiisaka/bin/kk/sample/make.bat.
+Creating file /Users/goichiiisaka/docs/sample/source/conf.py.
+Creating file /Users/goichiiisaka/docs/sample/source/index.rst.
+Creating file /Users/goichiiisaka/docs/sample/Makefile.
+Creating file /Users/goichiiisaka/docs/sample/make.bat.
 
 Finished: An initial directory structure has been created.
 
-You should now populate your master file /Users/goichiiisaka/bin/kk/sample/source/index.rst and create other documentation
+You should now populate your master file /Users/goichiiisaka/docs/sample/source/index.rst and create other documentation
 source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
