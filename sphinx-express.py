@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 __AUTHOR__="Gochi Iisaka"
-__VERSION__="0.1.0"
+__VERSION__="0.1.1"
 __LICENSE__="MIT"
 
 import os
@@ -339,7 +339,7 @@ def _generate(
 
     d = DEFAULTS.copy()
     d["path"] = project_dir
-    d["project"] = project or project_dir
+    d["project"] = project or os.path.basename(project_dir)
     if new:
         least_config = dict()
         templatedir = None
