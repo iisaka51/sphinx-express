@@ -1,6 +1,16 @@
 #!/usr/bin/env python
+"""
+    sphinx-express
+    ~~~~~~~~~~~~~~~~~~~~~
 
-__AUTHOR__="Gochi Iisaka"
+    Quickly setup documentation source to work with Sphinx.
+
+    :copyright: Copyright 2020- Goichi (iisaka) Yukawa
+    :license: MIT, see LICENSE.txt for details.
+"""
+
+
+__AUTHOR__="Gochi (iisaka) Yukawa"
 __VERSION__="0.1.1"
 __LICENSE__="MIT"
 
@@ -297,6 +307,12 @@ def initconfig():
     default: {}""".format( SphinxExpress.default_templatedir),
 )
 @click.option(
+    "--define_value", "-d",
+    type=str,
+    multiple=True, default=[],
+    help="define a template variable. NAME=VALUE"
+)
+@click.option(
     "--configfile", "-c",
     type=click.Path(),
     default=SphinxExpress.default_configfile,
@@ -316,9 +332,9 @@ def initconfig():
 )
 @click.argument("project_dir", nargs=1, required=False)
 @click.version_option(__VERSION__)
-def _generate(
+def quickstart(
     project, author, ver, lang,
-    templatedir, configfile, new, setup, project_dir=None
+    templatedir, define_value, configfile, new, setup, project_dir=None
 ):
 
     if setup:
@@ -340,6 +356,7 @@ def _generate(
     d = DEFAULTS.copy()
     d["path"] = project_dir
     d["project"] = project or os.path.basename(project_dir)
+    d["variables"] = list(define_value)
     if new:
         least_config = dict()
         templatedir = None
@@ -361,4 +378,4 @@ def _generate(
 
 
 if __name__ == "__main__":
-    _generate()
+    quickstart()
