@@ -271,15 +271,16 @@ def initconfig():
 
 
 @click.command(help="Create required files for a Sphinx project.")
-@click.option("--project", "-p", type=str, default=None, help="project name")
+@click.option("--project", "-p", type=str, default=None,
+    help="project name. default is basename of PROJECT_DIR.")
 @click.option("--author", "-a",
     type=str,
     default=SphinxExpress.default_user,
     help='author name. default is "{}"'.format(SphinxExpress.default_user),
 )
-@click.option("--version", "-v",
+@click.option("--ver", "-v",
     type=str,
-    default="0.0.1", help="version of project"
+    default="0.0.1", help="version of project. default is '0.0.1'"
 )
 @click.option(
     "--lang", "-l",
@@ -314,8 +315,9 @@ def initconfig():
     help="Copy quickstart templates and exit."
 )
 @click.argument("project_dir", nargs=1, required=False)
+@click.version_option(__VERSION__)
 def _generate(
-    project, author, version, lang,
+    project, author, ver, lang,
     templatedir, configfile, new, setup, project_dir=None
 ):
 
@@ -338,14 +340,14 @@ def _generate(
     d = DEFAULTS.copy()
     d["path"] = project_dir
     d["project"] = project or project_dir
-    config = SphinxExpress(configfile)
     if new:
         least_config = dict()
         templatedir = None
         d["author"] = author
-        d["version"] = version
+        d["version"] = ver
         d["lang"] = lang
     else:
+        config = SphinxExpress(configfile)
         least_config = config.load_config()
         d.update(**least_config)
 
