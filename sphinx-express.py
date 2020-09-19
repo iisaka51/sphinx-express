@@ -91,6 +91,7 @@ IGNORE_OPTIONS=[
     "rsrcdir",
     "rbuilddir",
     "now",
+    "variables",
 ]
 
 REPLACE_CONFIGS = {
