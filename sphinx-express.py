@@ -357,16 +357,18 @@ def quickstart(
     d = DEFAULTS.copy()
     d["path"] = project_dir
     d["project"] = project or os.path.basename(project_dir)
-    d["variables"] = list(define_value)
     if new:
-        least_config = dict()
         templatedir = None
         d["author"] = author
         d["version"] = ver
         d["lang"] = lang
+        d["variables"] = list(define_value)
     else:
         config = SphinxExpress(configfile)
         least_config = config.load_config()
+        least_variable = set(d.get("variables", []))
+        define_value = set(define_value)
+        d["variables"] = list(least_variable | define_value)
         d.update(**least_config)
 
     ask_user(d)
