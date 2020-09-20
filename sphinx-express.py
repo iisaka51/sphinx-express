@@ -30,6 +30,7 @@ from sphinx.cmd.quickstart import ask_user, generate, DEFAULTS
 RECOMEND_MODULES = {
     "pallets_sphinx_themes",
     "sphinx-rtd-theme",
+    "sphinx-jinja",
     "sphinxcontrib-seqdiag",
     "sphinxcontrib-blockdiag",
     "sphinxcontrib-nwdiag",
@@ -42,6 +43,7 @@ RECOMEND_MODULES = {
     "sphinxcontrib-serializinghtml",
     "sphinxcontrib-napoleon",
     "sphinx-charts",
+    "commonmark",
     "recommonmark",
 }
 
@@ -73,6 +75,7 @@ extensions:
 - sphinx.ext.autodoc
 - sphinx.ext.mathjax
 - sphinx.ext.autosectionlabel
+- sphinxcontrib.jinja
 - sphinxcontrib.blockdiag
 - sphinxcontrib.seqdiag
 - sphinxcontrib.blockdiag
@@ -157,6 +160,11 @@ blockdiag_html_image_format = 'SVG'
 # -- Options for actdiag output --------------------------------------------
 
 actdiag_html_image_format = 'SVG'
+{%- endif %}
+
+{%- if 'sphinxcontrib.jinja' in extensions %}
+# -- Options for jinja output ------------------------------------------
+# jinja_contexts = {}
 {%- endif %}
 
 {%- if 'sphinxcontrib.httpdomain' in extensions %}
