@@ -11,7 +11,7 @@
 
 
 __AUTHOR__="Gochi (iisaka) Yukawa"
-__VERSION__="0.1.2"
+__VERSION__="0.1.3"
 __LICENSE__="MIT"
 
 import os
@@ -99,7 +99,8 @@ IGNORE_OPTIONS=[
 REPLACE_CONFIGS = {
     "html_theme = 'alabaster'":
 """
-# Avilable Themes: alabaster
+# Avilable Themes:
+# alabaster
 {% set default_theme="alabaster" %}
 {%- if 'sphinx_rtd_theme' in extensions -%}
 # sphinx_rtd_theme
@@ -348,11 +349,15 @@ def quickstart(
     def parse_variables(variable_list):
         dummy = dict()
         for variable in variable_list:
-            name, value = variable.split('=')
-            dummy[name] = value
+            try:
+                name, value = variable.split('=')
+                dummy[name] = value
+            except ValueError:
+                print('Invalid template variable: {}'.format(variable))
         return  ['{}={}'.format(k,v) for k, v in dummy.items()]
 
     if setup:
+        print('ii')
         initconfig()
         sys.exit()
 
@@ -372,6 +377,13 @@ def quickstart(
     d["path"] = project_dir
     d["project"] = project or os.path.basename(project_dir)
 
+    if lang not in ['en', 'ja']:
+        try:
+            test_import = "from sphinx.locale import {}".format(lang)
+            eval(test_import)
+        except ImportError:
+            click.echo("{} is not supported language, using 'en'".format(lang))
+            lang='en'
 
     if new:
         templatedir = None
