@@ -357,7 +357,6 @@ def quickstart(
         return  ['{}={}'.format(k,v) for k, v in dummy.items()]
 
     if setup:
-        print('ii')
         initconfig()
         sys.exit()
 
