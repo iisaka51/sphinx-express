@@ -242,7 +242,7 @@ class SphinxExpress(object):
         return config
 
     def save_config(self, config: dict):
-        config_dir = os.path.dirname(self.configfile)
+        config_dir = os.path.dirname(self.configfile) or '.'
         os.makedirs(config_dir, exist_ok=True)
         with open(self.configfile, "w") as f:
             rv = yaml.dump(config, stream=f, default_flow_style=False, sort_keys=False)
@@ -309,7 +309,7 @@ def initconfig():
 )
 @click.option(
     "--templatedir", "-t",
-    type=click.Path(),
+    type=click.Path(file_okay=False, resolve_path=True, exists=True),
     default=SphinxExpress.default_templatedir,
     help="""
     template directory for template files.
@@ -323,7 +323,7 @@ def initconfig():
 )
 @click.option(
     "--configfile", "-c",
-    type=click.Path(),
+    type=click.Path(dir_okay=False, exists=True),
     default=SphinxExpress.default_configfile,
     help="""
     sphinx-express configfile.
@@ -393,6 +393,7 @@ def quickstart(
         d["variables"] = parse_variables(list(define_value))
     else:
         config = SphinxExpress(configfile)
+        print(config)
         least_config = config.load_config()
         least_variable = set(d.get("variables", []))
         define_value = set(define_value)
