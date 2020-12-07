@@ -98,23 +98,34 @@ Usage:
 
 ```
 $ sphinx-express --help
-Usage: sphinx-express [OPTIONS] [PROJECT_DIR]
+Usage: sphinx-express [OPTIONS] PROJECT_DIR
 
   Create required files for a Sphinx project.
 
+Arguments:
+  PROJECT_DIR  [required]
+
 Options:
-  -p, --project TEXT      project name
-  -a, --author TEXT       author name. default is "goichiiisaka"
-  -v, --version TEXT      version of project
-  -l, --lang TEXT         document language. default is 'ja'
-  -t, --templatedir PATH  template directory for template files. default:
-                          /Users/goichiiisaka/.sphinx/templates/quickstart
+  -p, --project PROJECT_NAME      project name.  default is basename of
+                                  PROJECT_DIR.
 
-  -c, --configfile PATH   sphinx-quickstart configfile. default:
-                          /Users/goichiiisaka/.sphinx/quickstartrc
+  -a, --author AUTHOR_NAME        author name. default is "goichiiisaka"
+                                  [default: goichiiisaka]
 
-  -N, --new               Ignore least configures.
-  --setup                 Copy quickstart templates and exit.
-  --help                  Show this message and exit.
+  -v, --ver VERSION               version of project.  [default: 0.0.1]
+  -l, --lang LANG                 document language.  [default: ja]
+  -t, --templatedir TEMPLATE_DIR  template directory for template files.
+                                  [default: /Users/goichiiisaka/.sphinx/templa
+                                  tes/quickstart]
+
+  -d, --define NAE=VALUE          define a template variable.
+  -c, --configfile CONFIG_FILEPATH
+                                  sphinx-express configfile.  [default:
+                                  /Users/goichiiisaka/.sphinx/quickstartrc]
+
+  -N, --new                       Ignore least configures.  [default: False]
+  --setup                         Copy templates and exit.  [default: False]
+  --version                       Show version and exit.  [default: False]
+  --help                          Show this message and exit.
 
 ```
