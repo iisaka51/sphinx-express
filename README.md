@@ -73,7 +73,7 @@ You can change above settings.
 and run sphinx-express again.
 
 ```bash
-$ sphinx-express.py sample
+$ sphinx-express sample
 Welcome to the Sphinx 3.2.1 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
@@ -98,7 +98,7 @@ Usage:
 
 ```
 $ sphinx-express --help
-Usage: sphinx-express.py [OPTIONS] [PROJECT_DIR]
+Usage: sphinx-express [OPTIONS] [PROJECT_DIR]
 
   Create required files for a Sphinx project.
 
