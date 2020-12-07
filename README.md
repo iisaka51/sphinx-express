@@ -1,10 +1,19 @@
 # sphinx-express
 
+
+## Install
+
+```
+$ git clone https://github.com/iisaka51/sphinx-express.git
+$ cd sphinx-express
+$ python setup.py install
+```
+
 ## Setup
 
 ```bash
 
-$ sphinx-express.py --setup
+$ sphinx-express --setup
 
 You should install follows packages.
 python -m pip install sphinx-rtd-theme sphinx-charts pallets_sphinx_themes sphinxcontrib-runcmd sphinxcontrib-napoleon
@@ -88,7 +97,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 Usage:
 
 ```
-$ ./sphinx-express.py --help
+$ sphinx-express --help
 Usage: sphinx-express.py [OPTIONS] [PROJECT_DIR]
 
   Create required files for a Sphinx project.
