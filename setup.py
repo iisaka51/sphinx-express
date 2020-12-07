@@ -26,6 +26,7 @@ LONG_DESCRIPTION = read('README.md')
 
 requirements = [
     'typer>=0.3.2',
+    'PyYAML>=5.3.1',
     'sphinx>=1.7.0',
 ]
 
