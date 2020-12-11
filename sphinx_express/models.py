@@ -43,8 +43,8 @@ class SphinxExpress(object):
 
         return config
 
-    def save_config(self, config: dict, discard_option=DISCARD_OPTIONS):
-        for key in DISCARD_OPTIONS:
+    def save_config(self, config: dict, discard_options=DISCARD_OPTIONS):
+        for key in discard_options::
             config.pop(key)
         config_dir = os.path.dirname(self.configfile)
         os.makedirs(config_dir, exist_ok=True)
