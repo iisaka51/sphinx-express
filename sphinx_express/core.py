@@ -6,18 +6,18 @@ from typing import Optional, List
 from pathlib import Path
 from sphinx.cmd.quickstart import ask_user, generate, DEFAULTS
 
-from .startup import initconfig
 from .models import SphinxExpress
-from .versions import __AUTHOR__, __VERSION__, __LICENSE__, __MYPROG__
 
 
 def startup_callback(flag: bool):
     if flag:
+        from .startup import initconfig
         initconfig()
         raise typer.Exit()
 
 def version_callback(flag: bool):
     if flag:
+        from .versions import __AUTHOR__, __VERSION__, __MYPROG__
         typer.echo(f'\n{__MYPROG__} - Version: {__VERSION__}')
         typer.echo(f'Copyright: 2020- Author: {__AUTHOR__}\n');
         raise typer.Exit()

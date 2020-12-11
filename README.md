@@ -25,7 +25,7 @@ quickstart templates of sphinx into your templatedir.
 
 ```
 
-Here is default quickstarrc.
+Here is default quickstartrc.
 
 ```yaml
 
