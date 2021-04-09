@@ -2,6 +2,7 @@ import pkg_resources
 import shutil
 import pathlib
 import typer
+import sphinx
 from .configs import RECOMEND_MODULES, DEFAULT_CONFIG
 from .templates import REPLACE_CONFIGS, APPEND_CONFIGS
 
