@@ -19,7 +19,7 @@ def initconfig(config):
     config.save_config(config_data)
 
     pathlib.Path(config.default_templatedir).mkdir(parents=True, exist_ok=True)
-    sphinx_module_dir = pathlib.Path(sphinx.__file__).parent()
+    sphinx_module_dir = pathlib.Path(sphinx.__file__).parent
     sphinx_template_dir = pathlib.Path(sphinx_module_dir) / "templates/quickstart"
     files = sphinx_template_dir.glob("*")
     for f in files:
