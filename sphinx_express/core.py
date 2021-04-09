@@ -40,7 +40,7 @@ def quickstart(
     lang: str = typer.Option('ja', '-l', '--lang',
                  metavar='LANG',
                  help="document language."),
-    templatedir: Optional[Path] = typer.Option(
+    templatedir: Optional[pathlib.Path] = typer.Option(
                 SphinxExpress.default_templatedir,
                 '-t', '--templatedir',
                  metavar='TEMPLATE_DIR',
@@ -49,7 +49,7 @@ def quickstart(
     define_value: List[str] = typer.Option(None, '-d', '--define',
                  metavar='NAE=VALUE',
                 help="define a template variable."),
-    configfile: Optional[Path] = typer.Option(
+    configfile: Optional[pathlib.Path] = typer.Option(
                 SphinxExpress.default_configfile,
                 '-c', '--configfile',
                  metavar='CONFIG_FILEPATH',
