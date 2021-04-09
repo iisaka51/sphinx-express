@@ -47,7 +47,7 @@ class SphinxExpress(object):
         for key in discard_options:
             try:
                 config.pop(key)
-            ecept KeyError:
+            except KeyError:
                 pass
         config_dir = os.path.dirname(self.configfile)
         os.makedirs(config_dir, exist_ok=True)
