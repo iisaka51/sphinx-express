@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
-import os
 import typer
+import pathlib
 from typing import Optional, List
-from pathlib import Path
 from sphinx.cmd.quickstart import ask_user, generate, DEFAULTS
 
 from .models import SphinxExpress
@@ -12,7 +11,8 @@ from .models import SphinxExpress
 def startup_callback(flag: bool):
     if flag:
         from .startup import initconfig
-        initconfig()
+        config = SphinxExpress()
+        initconfig(config)
         raise typer.Exit()
 
 def version_callback(flag: bool):
@@ -78,7 +78,7 @@ def quickstart(
         return  [f'{k}={v}' for k, v in dummy.items()]
 
     try:
-        dir = Path(project_dir)
+        dir = paathlib.Path(project_dir)
     except TypeError:
         click.echo("\nError: Missing argument 'PROJECT_DIR'.\n\n", err=True)
         raise typer.Exit()
@@ -91,7 +91,7 @@ def quickstart(
 
     d = DEFAULTS.copy()
     d["path"] = project_dir
-    d["project"] = project or os.path.basename(project_dir)
+    d["project"] = project or pathlib.Path(project_dir).dirname()
 
     if lang not in ['en', 'ja']:
         try:

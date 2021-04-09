@@ -45,7 +45,10 @@ class SphinxExpress(object):
 
     def save_config(self, config: dict, discard_options=DISCARD_OPTIONS):
         for key in discard_options:
-            config.pop(key)
+            try:
+                config.pop(key)
+            ecept KeyError:
+                pass
         config_dir = os.path.dirname(self.configfile)
         os.makedirs(config_dir, exist_ok=True)
         with open(self.configfile, "w") as f:
