@@ -78,7 +78,7 @@ def quickstart(
         return  [f'{k}={v}' for k, v in dummy.items()]
 
     try:
-        dir = paathlib.Path(project_dir)
+        dir = pathlib.Path(project_dir)
     except TypeError:
         click.echo("\nError: Missing argument 'PROJECT_DIR'.\n\n", err=True)
         raise typer.Exit()
@@ -91,7 +91,7 @@ def quickstart(
 
     d = DEFAULTS.copy()
     d["path"] = project_dir
-    d["project"] = project or pathlib.Path(project_dir).dirname()
+    d["project"] = project or pathlib.Path(project_dir).parent
 
     if lang not in ['en', 'ja']:
         try:
