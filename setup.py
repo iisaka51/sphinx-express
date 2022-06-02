@@ -2,16 +2,12 @@ import io
 import os
 
 from setuptools import setup, find_packages
+from pathlib import Path
 
-
-def read(rel_path):
-    here = os.path.abspath(os.path.dirname(__file__))
-    with io.open(os.path.join(here, rel_path), 'r') as fp:
-        return fp.read()
-
+this_directory = Path(__file__).parent
 
 def get_version(rel_path):
-    for line in read(rel_path).splitlines():
+    for line in (this_directory / rel_path).read_text().splitlines():
         if line.startswith('__VERSION__'):
             delim = '"' if '"' in line else "'"
             return line.split(delim)[1]
@@ -19,10 +15,8 @@ def get_version(rel_path):
         raise RuntimeError("Unable to find version string.")
 
 
-SHORT_DESCRIPTION = "An extension to click that easily turns your click app into a shell utility"
-
-# Use the README.md as the long description
-LONG_DESCRIPTION = read('README.md')
+LONG_DESCRIPTION = (this_directory / "README.md").read_text()
+SHORT_DESCRIPTION = "Quick setup utility for sphinx"
 
 requirements = [
     'typer>=0.3.2',
@@ -38,6 +32,7 @@ setup(
     author_email="iisaka51@gmail.com",
     description=SHORT_DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     license='MIT',
     include_package_data=True,
     packages=find_packages(),
@@ -63,6 +58,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Framework :: Setuptools Plugin',
         'Framework :: Sphinx',
         'Framework :: Sphinx :: Extension',

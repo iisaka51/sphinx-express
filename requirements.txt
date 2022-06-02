@@ -1,0 +1,3 @@
+sphinx
+PyYAML
+typer

@@ -11,8 +11,9 @@ from .startup import initconfig
 from .versions import __AUTHOR__, __VERSION__, __LICENSE__
 
 class SphinxExpress(object):
-    default_templatedir = Path.home() / ".sphinx/templates/quickstart"
-    default_configfile = Path.home() / ".sphinx/quickstartrc"
+    default_configdir = Path.home() / ".sphinx"
+    default_templatedir = default_configdir / "templates/quickstart"
+    default_configfile = default_configdir / "quickstartrc"
     default_user = os.getlogin()
 
     def __init__(self, configfile: Path = None):

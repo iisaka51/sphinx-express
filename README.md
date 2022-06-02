@@ -22,7 +22,6 @@ your configfile: /Users/goichiiisaka/.sphinx/quickstartrc
 your templatedir: /Users/goichiiisaka/.sphinx/templates/quickstart
 quickstart templates of sphinx into your templatedir.
 
-
 ```
 
 Here is default quickstartrc.
