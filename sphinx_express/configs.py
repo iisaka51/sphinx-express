@@ -2,6 +2,7 @@
 RECOMEND_MODULES = {
     "pallets_sphinx_themes",
     "sphinx-rtd-theme",
+    "sphinx-fontawesome",
     "sphinxcontrib-seqdiag",
     "sphinxcontrib-blockdiag",
     "sphinxcontrib-nwdiag",
